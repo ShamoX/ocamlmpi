@@ -8,7 +8,6 @@ MPILIBDIR=/usr/lib/openmpi/lib
 
 CC=/usr/bin/mpicc.openmpi
 CFLAGS=-I`$(OCAMLC) -where` -I$(MPIINCDIR) -O2 -g -Wall
-# FBR: switch flags to -O3 -g -W -Wall ???
 
 COBJS=init.o comm.o msgs.o collcomm.o groups.o utils.o
 OBJS=mpi.cmo
