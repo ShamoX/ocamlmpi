@@ -12,7 +12,8 @@ BuildDepends: unix
 BuildTools: make
 Synopsis: OCaml binding to the Message Passing Interface (MPI)
 
-# you need the package libopenmpi-dev installed on Linux so that you can compile this package
+# you need the package libopenmpi-dev installed on Linux so that
+# you can compile this package
 
 XCustomConf: echo 'The Makefile is already configured for OpenMPI on Linux'
 XCustomBuild: make all opt
