@@ -1,0 +1,23 @@
+OASISFormat: 0.3
+Name: mpi
+Version: 1.01
+Authors: Xavier Leroy
+Homepage: http://pauillac.inria.fr/~xleroy/software.html#ocamlmpi
+License: LGPL-2
+LicenseFile: LICENSE
+ConfType: custom (0.3)
+BuildType: custom (0.3)
+InstallType: custom (0.3)
+BuildDepends: unix
+BuildTools: make
+Synopsis: OCaml binding to the Message Passing Interface (MPI)
+
+# you need the package libopenmpi-dev installed on Linux so that you can compile this package
+
+XCustomConf: echo 'The Makefile is already configured for OpenMPI on Linux'
+XCustomBuild: make all opt
+XCustomInstall: make install
+XCustomUninstall: make uninstall
+
+Library mpi
+    Path: .
