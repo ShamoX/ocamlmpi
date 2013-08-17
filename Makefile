@@ -3,8 +3,9 @@ OCAMLOPT=ocamlopt
 OCAMLDEP=ocamldep
 
 DESTDIR=`$(OCAMLC) -where`/ocamlmpi
-MPIINCDIR=/usr/include/mpich2
-MPILIBDIR=/usr/lib
+PREFIX=$(shell find /usr/include /usr/local/include/ | grep -e "mpi\.h" | head -n 1 | xargs dirname | xargs dirname)
+MPIINCDIR=$(PREFIX)/include/mpich2
+MPILIBDIR=$(PREFIX)/lib
 
 CC=mpicc
 CFLAGS=-I`$(OCAMLC) -where` -I$(MPIINCDIR) -O2 -g -Wall
