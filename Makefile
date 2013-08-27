@@ -6,6 +6,7 @@ DESTDIR=`$(OCAMLC) -where`/ocamlmpi
 PREFIX=$(shell find /usr/include /usr/local/include/ | grep -e "mpi\.h" | head -n 1 | xargs dirname | xargs dirname)
 MPIINCDIR=$(PREFIX)/include/mpich2
 MPILIBDIR=$(PREFIX)/lib
+DOC_DIR = api-doc
 
 CC=mpicc
 CFLAGS=-I`$(OCAMLC) -where` -I$(MPIINCDIR) -O2 -g -Wall
@@ -36,6 +37,10 @@ opt: $(OBJS:.cmo=.cmx)
 	$(OCAMLC) -c $<
 .ml.cmx:
 	$(OCAMLOPT) -c $<
+
+doc:
+	mkdir -p $(DOC_DIR)
+	ocamldoc -d $(DOC_DIR) -html mpi.mli
 
 testmpi: test.ml mpi.cma libcamlmpi.a
 	ocamlc -g -o testmpi unix.cma mpi.cma test.ml -ccopt -L.
